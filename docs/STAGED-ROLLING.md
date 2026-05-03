@@ -10,6 +10,10 @@ Promote from `catarch-testing` to `catarch` only when:
 2. No known P0 regressions for installer, boot, or desktop login.
 3. Snapshot and rollback tests pass.
 
+## Automation Hooks
+- Build/testing repository: `./ci/build-catarch-repo.sh`
+- Promote testing to stable: `./ci/promote-testing-to-stable.sh`
+
 ## Advisories
 Each promotion should publish:
 - Included updates

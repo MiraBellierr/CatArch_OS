@@ -19,6 +19,14 @@ sudo pacman -Syu --needed archiso git base-devel devtools rsync squashfs-tools
 ./ci/build-iso.sh
 ```
 
+## Local Repository Bootstrap
+If CatArch mirror placeholders are unresolved, build local repos first:
+```bash
+./ci/build-catarch-repo.sh --clean
+./ci/build-iso.sh --clean --catarch-mirror-base "file://$(pwd)/repo"
+```
+Full instructions: [docs/REPO-BUILD.md](./docs/REPO-BUILD.md)
+
 ## Repository Layout
 - `archiso/` ISO profile and live filesystem overlays
 - `calamares/` installer config and branding

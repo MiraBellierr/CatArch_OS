@@ -38,6 +38,17 @@ Example above corresponds to `2025-01-01 00:00:00 UTC`.
 ./ci/build-iso.sh --clean
 ```
 
+If CatArch placeholder mirrors are not reachable yet:
+```bash
+./ci/build-catarch-repo.sh --clean
+./ci/build-iso.sh --clean --catarch-mirror-base "file://$(pwd)/repo"
+```
+or temporarily skip CatArch repos:
+```bash
+./ci/build-iso.sh --clean --skip-catarch-repos
+```
+See [REPO-BUILD.md](./REPO-BUILD.md) for full repo workflow.
+
 ## Build Script Options
 ```bash
 ./ci/build-iso.sh --help
