@@ -72,7 +72,7 @@ system-config-printer
 print-manager
 
 # package management + utilities
-plasma-discover
+discover
 packagekit-qt6
 pacman-contrib
 reflector
