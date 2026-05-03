@@ -4,6 +4,7 @@
 - Arch Linux build host (recommended)
 - `archiso`, `devtools`, `base-devel`, `rsync`, `squashfs-tools`
 - `shellcheck` (recommended for script linting)
+- Build from a native Linux filesystem path (for example `/home/<user>/catOS`), not a VM shared folder mount.
 
 ## Install Dependencies
 ```bash
@@ -68,3 +69,13 @@ shellcheck ci/build-iso.sh ci/bootstrap-releng.sh ci/verify-day*.sh
 - Keep `SOURCE_DATE_EPOCH` fixed across rebuilds.
 - Do not edit `archiso/profiledef.sh` timestamp logic ad-hoc during release build.
 - Keep `archiso/packages.x86_64` reviewed and stable before release candidates.
+
+## Troubleshooting: Stale `work/` Mounts
+If a previous `mkarchiso` run was interrupted, `work/x86_64/airootfs/{dev,proc,run,sys}` may remain mounted.
+`./ci/build-iso.sh --clean` now attempts to unmount these automatically before removing `work/`.
+If cleanup still fails, run:
+```bash
+sudo findmnt -R ./work
+sudo umount -R ./work
+sudo rm -rf ./work
+```

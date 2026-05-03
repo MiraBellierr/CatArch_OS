@@ -33,6 +33,32 @@ require_cmd() {
   command -v "$1" >/dev/null 2>&1 || die "Required command not found: $1"
 }
 
+unmount_stale_work_mounts() {
+  local root="$1"
+  local mount_target
+  local -a mounts=()
+
+  [[ -d "$root" ]] || return 0
+  command -v findmnt >/dev/null 2>&1 || return 0
+  command -v umount >/dev/null 2>&1 || return 0
+
+  mapfile -t mounts < <(
+    findmnt -R -n -o TARGET --target "$root" 2>/dev/null \
+      | awk -v root="$root" 'index($0, root) == 1 { print }' \
+      | awk '{ print length "\t" $0 }' \
+      | sort -rn \
+      | cut -f2-
+  )
+
+  ((${#mounts[@]} > 0)) || return 0
+
+  for mount_target in "${mounts[@]}"; do
+    log "Unmounting stale mount under work dir: $mount_target"
+    umount "$mount_target" 2>/dev/null || umount -R "$mount_target" 2>/dev/null \
+      || die "Failed to unmount '$mount_target'. Try: sudo findmnt -R \"$root\" && sudo umount -R \"$root\""
+  done
+}
+
 normalize_url_base() {
   local url="$1"
   url="${url%/}"
@@ -139,7 +165,8 @@ fi
 
 if [[ "$CLEAN" == true ]]; then
   log "Cleaning work directory: $WORK_DIR"
-  rm -rf "$WORK_DIR"
+  unmount_stale_work_mounts "$WORK_DIR"
+  rm -rf -- "$WORK_DIR"
 fi
 
 mkdir -p "$WORK_DIR" "$OUT_DIR"
