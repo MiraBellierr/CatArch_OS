@@ -1,0 +1,5 @@
+# Placeholder snapper config for root filesystem.
+# Actual tuned values will be applied during Day 11 tasks.
+TIMELINE_CREATE="yes"
+NUMBER_CLEANUP="yes"
+TIMELINE_CLEANUP="yes"

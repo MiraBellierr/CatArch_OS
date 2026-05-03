@@ -1,0 +1,15 @@
+name: nightly-iso
+
+on:
+  schedule:
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+
+jobs:
+  scaffold-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Verify scaffold
+        run: bash ci/smoke-check.sh

@@ -1,0 +1,13 @@
+---
+id: catarch
+name: CatArch OS
+version: 1.0
+shortVersion: 1.0
+versionedName: CatArch OS 1.0
+productUrl: https://catarch.example
+supportUrl: https://catarch.example/support
+knownIssuesUrl: https://catarch.example/issues
+releaseNotesUrl: https://catarch.example/release-notes
+welcomeStyleCalamares: true
+windowExpanding: normal
+slideshow: slideshow/index.html

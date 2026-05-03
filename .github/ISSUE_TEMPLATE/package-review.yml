@@ -1,0 +1,51 @@
+name: Package Review
+description: Review one baseline package category for CatArch ISO
+title: "Package Review - "
+labels: ["build", "qa", "docs"]
+body:
+  - type: input
+    id: category
+    attributes:
+      label: Category
+      description: Example: Audio and Media
+      placeholder: "Audio and Media"
+    validations:
+      required: true
+  - type: textarea
+    id: current_packages
+    attributes:
+      label: Current Package List
+      description: Copy packages from archiso/packages.x86_64 for this category.
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Rationale
+      description: One-line reason for each package.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Candidate replacements and tradeoffs.
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks
+      description: Size, memory, compatibility, licensing, maintenance risks.
+    validations:
+      required: true
+  - type: dropdown
+    id: decision
+    attributes:
+      label: Decision
+      options:
+        - keep
+        - replace
+        - drop
+    validations:
+      required: true

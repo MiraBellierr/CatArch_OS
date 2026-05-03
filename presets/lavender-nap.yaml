@@ -1,0 +1,12 @@
+id: lavender-nap
+name: Lavender Nap
+mode: light
+plasma_theme: catarch-lavender
+gtk_theme: catarch-gtk-lavender
+icon_theme: catarch-icons
+cursor_theme: catarch-paw-cursor
+wallpaper: /usr/share/backgrounds/catarch/lavender-room.jpg
+sound_theme: catarch-meow
+panel_layout: wide-dock
+animation_profile: smooth
+accent_color: "#C7B5F8"

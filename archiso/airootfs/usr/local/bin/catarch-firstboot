@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "CatArch first-boot placeholder"
+echo "This script will initialize preset onboarding in a future day task."

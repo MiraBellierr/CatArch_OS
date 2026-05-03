@@ -1,0 +1,12 @@
+id: midnight-neko
+name: Midnight Neko
+mode: dark
+plasma_theme: catarch-midnight
+gtk_theme: catarch-gtk-midnight
+icon_theme: catarch-icons
+cursor_theme: catarch-paw-cursor
+wallpaper: /usr/share/backgrounds/catarch/midnight-window.jpg
+sound_theme: catarch-meow
+panel_layout: cozy-bottom
+animation_profile: reduced-motion
+accent_color: "#2D2A3A"

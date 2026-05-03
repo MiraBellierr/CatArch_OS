@@ -1,0 +1,13 @@
+pkgname=paw-control-center
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="CatArch theme and profile control CLI"
+arch=('x86_64')
+license=('MIT')
+depends=('bash')
+source=('pawctl')
+sha256sums=('SKIP')
+
+package() {
+  install -Dm755 "$srcdir/pawctl" "$pkgdir/usr/bin/pawctl"
+}

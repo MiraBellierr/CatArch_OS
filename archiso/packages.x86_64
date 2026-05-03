@@ -1,0 +1,79 @@
+# CatArch ISO package baseline (Day 03)
+
+# boot + base system
+base
+linux
+linux-firmware
+amd-ucode
+intel-ucode
+mkinitcpio
+grub
+efibootmgr
+
+# filesystem + rollback stack
+btrfs-progs
+snapper
+snap-pac
+grub-btrfs
+btrfs-assistant
+
+# KDE desktop session
+plasma-desktop
+plasma-workspace
+plasma-nm
+kde-gtk-config
+xdg-desktop-portal
+xdg-desktop-portal-kde
+sddm
+sddm-kcm
+
+# core desktop apps
+dolphin
+konsole
+kate
+gwenview
+spectacle
+okular
+ark
+filelight
+
+# networking + bluetooth
+networkmanager
+modemmanager
+iwd
+bluez
+bluez-utils
+bluedevil
+
+# audio + media
+pipewire
+pipewire-alsa
+pipewire-pulse
+wireplumber
+pavucontrol
+ffmpeg
+gst-plugins-base
+gst-plugins-good
+gst-plugins-bad
+gst-libav
+
+# fonts + localization
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+ttf-dejavu
+ttf-liberation
+ttf-jetbrains-mono
+
+# firmware + printing
+fwupd
+cups
+system-config-printer
+print-manager
+
+# package management + utilities
+plasma-discover
+packagekit-qt6
+pacman-contrib
+reflector
+rsync

@@ -1,0 +1,12 @@
+id: matcha-paw
+name: Matcha Paw
+mode: light
+plasma_theme: catarch-matcha
+gtk_theme: catarch-gtk-matcha
+icon_theme: catarch-icons
+cursor_theme: catarch-paw-cursor
+wallpaper: /usr/share/backgrounds/catarch/matcha-desk.jpg
+sound_theme: catarch-meow
+panel_layout: compact-top
+animation_profile: smooth
+accent_color: "#9FD8B3"

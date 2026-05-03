@@ -1,0 +1,12 @@
+id: strawberry-milk
+name: Strawberry Milk
+mode: light
+plasma_theme: catarch-strawberry
+gtk_theme: catarch-gtk-strawberry
+icon_theme: catarch-icons
+cursor_theme: catarch-paw-cursor
+wallpaper: /usr/share/backgrounds/catarch/strawberry-cafe.jpg
+sound_theme: catarch-meow
+panel_layout: cozy-bottom
+animation_profile: smooth
+accent_color: "#F7A8C4"

@@ -1,0 +1,33 @@
+name: Day Task
+about: Track one day of the 42-day CatArch execution plan
+title: "Day XX - "
+labels: ["build"]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Day Goal
+      description: Copy the build task and done criteria from PROGRESS.md.
+    validations:
+      required: true
+  - type: textarea
+    id: contribution_tasks
+    attributes:
+      label: Contribution Tasks
+      description: List contributor tasks for this day.
+    validations:
+      required: true
+  - type: textarea
+    id: deliverables
+    attributes:
+      label: Deliverables
+      description: Files, docs, and artifacts expected by end of day.
+    validations:
+      required: true
+  - type: textarea
+    id: testing
+    attributes:
+      label: Testing
+      description: How this day will be validated.
+    validations:
+      required: true

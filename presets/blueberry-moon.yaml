@@ -1,0 +1,12 @@
+id: blueberry-moon
+name: Blueberry Moon
+mode: dark
+plasma_theme: catarch-blueberry
+gtk_theme: catarch-gtk-blueberry
+icon_theme: catarch-icons
+cursor_theme: catarch-paw-cursor
+wallpaper: /usr/share/backgrounds/catarch/blueberry-night.jpg
+sound_theme: catarch-meow
+panel_layout: cozy-bottom
+animation_profile: smooth
+accent_color: "#8FA8FF"

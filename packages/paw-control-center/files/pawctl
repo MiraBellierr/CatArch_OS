@@ -1,0 +1,114 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+PRESET_DIR="/usr/share/catarch/presets"
+CONF_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/catarch"
+CONF_FILE="$CONF_DIR/settings.conf"
+
+usage() {
+  cat <<'EOF'
+Usage:
+  pawctl preset list
+  pawctl preset apply <id>
+  pawctl mode set beginner|advanced
+  pawctl mascot enable|disable
+  pawctl sounds enable|disable
+EOF
+}
+
+ensure_conf_dir() {
+  mkdir -p "$CONF_DIR"
+  touch "$CONF_FILE"
+}
+
+set_key() {
+  local key="$1"
+  local value="$2"
+  ensure_conf_dir
+  if grep -q "^${key}=" "$CONF_FILE"; then
+    sed -i "s|^${key}=.*|${key}=${value}|" "$CONF_FILE"
+  else
+    echo "${key}=${value}" >> "$CONF_FILE"
+  fi
+}
+
+preset_list() {
+  if [[ ! -d "$PRESET_DIR" ]]; then
+    echo "Preset directory not found: $PRESET_DIR" >&2
+    exit 1
+  fi
+  find "$PRESET_DIR" -maxdepth 1 -type f -name '*.yaml' -printf '%f\n' | sed 's/.yaml$//' | sort
+}
+
+preset_apply() {
+  local id="$1"
+  local file="$PRESET_DIR/${id}.yaml"
+  if [[ ! -f "$file" ]]; then
+    echo "Preset not found: $id" >&2
+    exit 1
+  fi
+  set_key "preset" "$id"
+  echo "Preset selected: $id"
+  echo "Note: full theme application hook will be added in a future day task."
+}
+
+main() {
+  if [[ "$#" -lt 1 ]]; then
+    usage
+    exit 1
+  fi
+
+  case "$1" in
+    preset)
+      case "${2:-}" in
+        list)
+          preset_list
+          ;;
+        apply)
+          if [[ "$#" -ne 3 ]]; then
+            usage
+            exit 1
+          fi
+          preset_apply "$3"
+          ;;
+        *)
+          usage
+          exit 1
+          ;;
+      esac
+      ;;
+    mode)
+      if [[ "${2:-}" == "set" && ( "${3:-}" == "beginner" || "${3:-}" == "advanced" ) ]]; then
+        set_key "mode" "$3"
+        echo "Mode set: $3"
+      else
+        usage
+        exit 1
+      fi
+      ;;
+    mascot)
+      if [[ "${2:-}" == "enable" || "${2:-}" == "disable" ]]; then
+        set_key "mascot" "$2"
+        echo "Mascot: $2"
+      else
+        usage
+        exit 1
+      fi
+      ;;
+    sounds)
+      if [[ "${2:-}" == "enable" || "${2:-}" == "disable" ]]; then
+        set_key "sounds" "$2"
+        echo "Sounds: $2"
+      else
+        usage
+        exit 1
+      fi
+      ;;
+    *)
+      usage
+      exit 1
+      ;;
+  esac
+}
+
+main "$@"
