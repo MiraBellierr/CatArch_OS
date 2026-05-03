@@ -23,7 +23,7 @@ done
 check_contains() {
   local file="$1"
   local expected="$2"
-  if ! grep -Fq "$expected" "$file"; then
+  if ! grep -Fq -- "$expected" "$file"; then
     echo "missing in $file: $expected"
     exit 1
   fi
